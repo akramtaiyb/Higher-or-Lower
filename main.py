@@ -138,7 +138,7 @@ class Game:
         menu_bg = pygame.image.load('menu-bg.png')
         mainLogo = pygame.image.load('main.png')
         text = self.playerOne.userName
-        fps = 16
+        fps = 14
         clock = pygame.time.Clock()
 
         song = 'to-the-next-round.mp3'
@@ -355,6 +355,7 @@ class Game:
                                         nextCard = Card()
                                         pygame.mixer.Channel(1).play(pygame.mixer.Sound(cardSlide))
                                     elif event.key == pygame.K_ESCAPE:
+                                        pygame.mixer.Channel(2).play(pygame.mixer.Sound(click))
                                         esc = True
                                         screen.blit(bg, (0, 0))
                                         score = mainFont.render(f'Your score is: {self.playerOne.score}', True, textColor)
@@ -377,8 +378,10 @@ class Game:
                         if event.type == pygame.KEYDOWN:
                             self.playerOne.score = 0
                             if event.key == pygame.K_RETURN:
+                                pygame.mixer.Channel(2).play(pygame.mixer.Sound(click))
                                 esc = False
                             if event.key == pygame.K_ESCAPE:
+                                pygame.mixer.Channel(2).play(pygame.mixer.Sound(click))
                                 menu = True
                                 esc = False
                     pygame.display.update()
